@@ -1,20 +1,25 @@
-const http = require('http')
+const express = require('express')
+const app = express()
 
-const fs = require('fs')
+// const fs = require('fs')
 const path = require('path')
 
-const server = http.createServer((req, res) => {
+app.use(express.static(path.join(__dirname, 'public')))
 
-    console.log(__dirname)
-
-    const pathFile = path.join(__dirname, 'public', 'index.html')
-
-    const html = fs.readFileSync(pathFile)
-
-    res.writeHead(200, {'Content-Type': 'text/html; charset=UTF-8'})
-    res.end(html)
+app.get('/', (req, res) => {
+    res.send('Hola Express!')
 })
 
-const PORT = env.process.PORT || 3001
+app.set('view engine', 'ejs')
 
-server.listen(PORT, console.log(`conectando el servidor en http://localhost:${PORT}`))
+app.get('/url', (req, res) => {
+    res.send('Hola Express')
+})
+
+app.get('/watch', (req, res) =>  {
+    res.send('<h2>probando watch</h2>')
+})
+
+const PORT = 3001
+
+app.listen(PORT, () => console.log(`conectando el servidor en http://localhost:${PORT}`))
