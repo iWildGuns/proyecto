@@ -18,6 +18,6 @@ app.get('/watch', (req, res) =>  {
     res.send('<h2>probando watch</h2>')
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => console.log(`conectando el servidor en http://localhost:${PORT}`))
