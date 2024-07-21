@@ -10,8 +10,6 @@ app.get('/', (req, res) => {
     res.send('Hola Express!')
 })
 
-app.set('view engine', 'ejs')
-
 app.get('/url', (req, res) => {
     res.send('Hola Express')
 })
